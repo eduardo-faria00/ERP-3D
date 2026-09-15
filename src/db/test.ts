@@ -1,10 +1,14 @@
 import { db } from "./index";
 import { sql } from "drizzle-orm";
 
-async function testConnection() {
-  const result = await db.execute(sql`SELECT 1`);
+async function main() {
+  const result = await db.execute(sql`
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = 'public'
+  `);
 
-  console.log(result);
+  console.log(result.rows);
 }
 
-testConnection();
+main();

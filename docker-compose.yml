@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: erp3d-postgres
+
+    environment:
+      POSTGRES_USER: erp3d
+      POSTGRES_PASSWORD: erp3d
+      POSTGRES_DB: erp3d
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:
